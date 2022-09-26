@@ -1,13 +1,15 @@
 import { getProviders, signIn } from "next-auth/react";
 
 function Login({providers}) {
-  console.log(providers);
   return (
-    <div>
-      <img className="w-52 mb-5" src = "https://yt3.ggpht.com/ytc/AMLnZu99OK9pxlnPVKzzvMOKXC46v13JsORp6wYPGBiioQ=s900-c-k-c0x00ffffff-no-rj" alt ="" />
+    <div className = "flex flex-col items-center bg-black min-h-screen w-full justify-center">
+      <img className="w-52 mb-5" src = "https://i.imgur.com/fPuEa9V.png" alt ="" />
       {Object.values(providers).map((provider) => ( 
-        <div>
-          <button>Login with {provider.name}</button>
+        <div key={provider.name}>
+          <button className = "bg-[#18D860] text-white p-5 rounded-full"
+          onClick = {() => signIn(provider.id, {callbackUrl: "/" })}>
+            Login with {provider.name}
+          </button>
         </div> 
       ))}
     </div>
